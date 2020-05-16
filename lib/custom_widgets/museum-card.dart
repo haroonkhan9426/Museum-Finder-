@@ -26,7 +26,11 @@ class MuseumCard extends StatelessWidget {
         children: <Widget>[
           ClipRRect(
             borderRadius: BorderRadius.all(Radius.circular(10)),
-            child: Image.asset(image, height: 100, fit: BoxFit.cover,),
+            child: Image.network(
+              'https://firebasestorage.googleapis.com/v0/b/gdg-session3.appspot.com/o/Asset%201.png?alt=media&token=4453f0f7-ff36-47c1-8009-1244481417aa',
+              height: 100,
+              fit: BoxFit.cover,
+            ),
           ),
           Padding(
             padding:
@@ -48,9 +52,11 @@ class MuseumCard extends StatelessWidget {
             children: <Widget>[
               Icon(Icons.pin_drop),
               SizedBox(width: 10),
-              Text(
-                address,
-                style: TextStyle(color: Colors.grey),
+              Flexible(
+                child: Text(
+                  address,
+                  style: TextStyle(color: Colors.grey),
+                ),
               ),
             ],
           )

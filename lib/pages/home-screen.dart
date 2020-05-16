@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:museumapp/custom_widgets/museum-card.dart';
@@ -12,9 +13,15 @@ class _HomeScreenState extends State<HomeScreen> {
   var museumsList;
   bool gotData = false;
   bool hasData = false;
+  
+  Stream<QuerySnapshot> stream = Firestore.instance.collection('museums').snapshots();
+  
 
   @override
   void initState() {
+    stream.listen((data){
+      print('Doc lenthg at firebase: ${data.documents.length}');
+    });
     _getData();
     super.initState();
   }
